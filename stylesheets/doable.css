@@ -6,15 +6,11 @@
   font-style: normal;
   border: 0;
   margin: auto;
+  list-style: none;
 }
 
 body{
   background: lightgray;
-}
-
-input{
-  margin-top: 4px;
-  margin-bottom: 16px;
 }
 
 a{
@@ -28,6 +24,10 @@ input:focus{
   outline: none;
 }
 
+input[type=checkbox]:checked {
+  background-color: green;
+}
+
 .app-container{
   display: flex;
   flex-direction: column;
@@ -37,7 +37,6 @@ input:focus{
   width: 361px;
   height: 48px;
   background: #E5E7EB;
-  display: flex;
   position: relative;
 }
 
@@ -49,6 +48,15 @@ input:focus{
 
 .app-form{
   padding: 96px 14px 0px 18px;
+}
+
+.user-form-input{
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+.logout{
+  position: relative;
 }
 
 .logo{
@@ -85,18 +93,46 @@ input:focus{
   padding: 9px;
 }
 
-.actions{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
+.logout-logo{
+  position: absolute;
+  left: 59px;
+  top: 5px;
+  bottom: 5px;
+  display: none;
 }
 
 /*utils*/
+.flex{
+  display: flex;
+}
+
 .flex-column{
   display: flex;
   flex-direction: column;
 }
 
+.g-4{
+  gap: 4px;
+}
+
 .g-16{
-  gap:16px
+  gap: 16px;
+}
+
+.g-10{
+  gap: 10px;
+}
+
+.mb-16{
+  margin-bottom: 16px; 
+}
+
+.pd-lr-18{
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.category{
+  width: 250px;
+  height: 42px;
 }

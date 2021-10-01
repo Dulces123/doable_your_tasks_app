@@ -9,23 +9,23 @@
   </head>
   <body>
     <div class = 'app-container'>
-      <div class = "app-header">
+      <div class = "app-header flex">
         <div>
           <img class = "logo" src="../images/{ doable }.svg" alt="doable :)">
         </div>
-        <!-- <div class = "logout">
-          <img src="./images/logout.svg" alt="logout">
-        </div> -->
+        <div class = "logout">
+          <img class = "logout-logo "src="../images/logout.svg" alt="logout">
+        </div>
       </div>
       <div class = "app-content">
         <div class = "app-form">
           <form id = "app-form">
             <p>Email</p>
-            <input type="text" name = "email">
+            <input class = "user-form-input" type="text" name = "email">
             <p>Password</p>
-            <input type="password" name = "password">
+            <input class = "user-form-input" type="password" name = "password">
           </form>
-          <div class = "actions">
+          <div class = "flex-column g-16">
             <button class = "button-submit" type = "submit" form="app-form">Create account</button>
             <a href="#">Login</a>
           </div>
