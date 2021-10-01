@@ -1,6 +1,6 @@
 import { apiFetcher } from "./apiFetcher.js";
 
-export const SessionFecther = (() => {
+export const SessionFetcher = (() => {
   return {
     login: (email, password) =>
       apiFetcher(

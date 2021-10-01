@@ -1,4 +1,4 @@
-import { apiFetcher } from "../scripts/apiFetcher.js";
+import { apiFetcher } from "../services/apiFetcher.js";
 
 export const TaskFetcher = (() => {
   return {
@@ -16,7 +16,7 @@ export const TaskFetcher = (() => {
         },
         { title, dueDate }
       ),
-    edit: (important, completed) =>
+    edit: (id, taskData) =>
       apiFetcher(
         `tasks/${id}`,
         "PATCH",
@@ -24,7 +24,7 @@ export const TaskFetcher = (() => {
           "Content-type": "application/json",
           Authorization: `Token token=${sessionStorage.getItem("userToken")}`,
         },
-        { important, completed }
+        taskData
       ),
   };
 })();

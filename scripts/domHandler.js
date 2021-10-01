@@ -3,6 +3,7 @@ export const DOMHandler = (() => {
     render: (elementHTML) => {
       const container = document.querySelector(".app-content")
       container.innerHTML = elementHTML.render()
+      elementHTML.listeners();
     } 
   }
 }

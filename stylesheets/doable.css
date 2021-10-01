@@ -28,6 +28,10 @@ input[type=checkbox]:checked {
   background-color: green;
 }
 
+button:focus{
+  outline: none;
+}
+
 .app-container{
   display: flex;
   flex-direction: column;
@@ -101,6 +105,11 @@ input[type=checkbox]:checked {
   display: none;
 }
 
+.category{
+  width: 250px;
+  height: 42px;
+}
+
 /*utils*/
 .flex{
   display: flex;
@@ -132,7 +141,3 @@ input[type=checkbox]:checked {
   padding-right: 18px;
 }
 
-.category{
-  width: 250px;
-  height: 42px;
-}
