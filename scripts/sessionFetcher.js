@@ -13,8 +13,7 @@ export const SessionFecther = (() => {
       apiFetcher(
         "logout",
         "DELETE",
-        { Authorization: `Token token=${sessionStorage.getItem("userToken")}` },
-        { email, password }
+        { Authorization: `Token token=${sessionStorage.getItem("userToken")}` }
       ),
   };
 })();
