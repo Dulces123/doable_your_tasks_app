@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+*{
+  text-decoration: none;
+  font-family: Inter;
+  font-style: normal;
+  border: 0;
+  margin: auto;
+}
+
+body{
+  background: lightgray;
+}
+
+input{
+  margin-top: 4px;
+  margin-bottom: 16px;
+}
+
+a{
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #EC4899;
+}
+
+input:focus{
+  outline: none;
+}
+
+.app-container{
+  display: flex;
+  flex-direction: column;
+}
+
+.app-header{
+  width: 361px;
+  height: 48px;
+  background: #E5E7EB;
+  display: flex;
+  position: relative;
+}
+
+.app-content{
+  background-color: #FFFFFF;
+  width: 361px;
+  height: 592px;
+}
+
+.app-form{
+  padding: 96px 14px 0px 18px;
+}
+
+.logo{
+  position: absolute;
+  width: 101px;
+  height: 24px;
+  left: 129px;
+  top: 12px;
+}
+
+#app-form{
+  margin-bottom: 16px;
+}
+
+#app-form input{
+  width: 100%;
+  height: 42px;
+  background: #FFFFFF;
+  border: 1px solid #D1D5DB;
+  box-sizing: border-box;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+}
+
+.button-submit{
+  width: 100%;
+  background: #EC4899;
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #FFFFFF;
+  padding: 9px;
+}
+
+.actions{
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/*utils*/
+.flex-column{
+  display: flex;
+  flex-direction: column;
+}
+
+.g-16{
+  gap:16px
+}
