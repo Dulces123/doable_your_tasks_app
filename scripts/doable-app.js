@@ -1,7 +1,8 @@
-import { SessionFecther } from "../scripts/sessionFetcher.js";
-import { TaskFetcher } from "../scripts/taskFetcher.js"
+import { SessionFecther } from "./services/sessionFetcher.js";
+import { DOMHandler } from "./domHandler.js"
+// await SessionFecther.login("erizo@mail.com", "123456").then((body) => {
+//   sessionStorage.setItem("userToken", body.token);
+//   console.log(sessionStorage.getItem("userToken"));
+// });
 
-await SessionFecther.login("erizo@mail.com", "123456").then((body) => {
-  sessionStorage.setItem("userToken", body.token);
-  console.log(sessionStorage.getItem("userToken"));
-});
+DOMHandler.render()

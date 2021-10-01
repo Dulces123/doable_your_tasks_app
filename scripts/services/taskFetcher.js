@@ -16,7 +16,7 @@ export const TaskFetcher = (() => {
         },
         { title, dueDate }
       ),
-    edit: (id, title, dueDate, important, completed) =>
+    edit: (important, completed) =>
       apiFetcher(
         `tasks/${id}`,
         "PATCH",
@@ -24,7 +24,7 @@ export const TaskFetcher = (() => {
           "Content-type": "application/json",
           Authorization: `Token token=${sessionStorage.getItem("userToken")}`,
         },
-        { title, dueDate, important, completed }
+        { important, completed }
       ),
   };
 })();
