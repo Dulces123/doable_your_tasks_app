@@ -5,8 +5,27 @@ import { loginView } from "../pages/loginView.js"
 import { STORE } from "../store.js"
 
 export const MainView = (() => {
+  async function changeImportant(e){
+    const taskId = parseInt(e.target.dataset.id)
+    const currentTask = STORE.getTasks().find(task => task.id === taskId)
+    currentTask.important = currentTask.important ? false : true
+    await TaskFetcher.edit(taskId, currentTask)
+    DOMHandler.render(MainView)
+  }
+
+  async function markAsCompleted(e){
+    const taskId = parseInt(e.target.dataset.id)
+    const currentTask = STORE.getTasks().find(task => task.id === taskId)
+    currentTask.completed = currentTask.completed ? false : true
+    await TaskFetcher.edit(taskId, currentTask)
+    DOMHandler.render(MainView)
+  }
+
+
+
   async function logoutUser(){
     await SessionFetcher.logout().then(() => sessionStorage.clear())
+    document.querySelector(".logout-logo").style.display = "none"
     DOMHandler.render(loginView)
   }
 
@@ -28,17 +47,16 @@ export const MainView = (() => {
   }
   return {
     render: () => {
-      console.log(STORE.getTasks())
-      const listOfTasks = STORE.getTasks().map(task => `<li class = "flex">
+      const listOfTasks = STORE.getTasks().map(task => `<li class = "flex justify-sb alit-center">
       <div class = "flex g-10">
-        <input type="checkbox">
+      <img id = "completed" data-id = ${task.id} src="./images/${!task.completed? "" : "pink-"}checkbox.svg" alt="completed">
         <p>${task.title}</p>
       </div>
-      <img src="./images/important-${!task.important? "dark" : task.completed? "pink-lite": "pink"}.svg" alt="importance">
+      <img id = "important" data-id = ${task.id} src="./images/important-${!task.important? "dark" : task.completed? "pink-lite": "pink"}.svg" alt="importance">
     </li>`).join(" ")
 
       return `<div class = "pd-lr-18">
-      <div class = "flex">
+      <div class = "flex justify-sb alit-center">
         <p>Sort</p>
         <select class = "category" name="category">
           <option value="alphabetical">Alphabetical (a-z)</option>
@@ -46,14 +64,14 @@ export const MainView = (() => {
           <option value="importance">Importance</option>
         </select>
       </div>
-      <div class = "flex">
+      <div class = "flex g-18">
         <p>Show</p>
         <div class = "flex">
-          <input type="checkbox">
+        <img id = "completed" src="./images/${STORE.getPendingState()? "pink-" : ""}checkbox.svg" alt="completed">
           <p>Only pending</p>
         </div>
         <div class="flex">
-          <input type="checkbox">
+          <img id = "completed" src="./images/${STORE.getImportanceState()? "pink-" : ""}checkbox.svg" alt="completed">
           <p>Only important</p>
         </div>
       </div>
@@ -70,6 +88,10 @@ export const MainView = (() => {
     listeners: () => {
       const addButton = document.querySelector(".button-submit")
       const logoutButton = document.querySelector(".logout-logo")
+      const importantToggles = document.querySelectorAll("#important")
+      importantToggles.forEach(toggle => toggle.addEventListener('click', changeImportant))
+      const completedToggles = document.querySelectorAll("#completed")
+      completedToggles.forEach(toggle => toggle.addEventListener('click', markAsCompleted))
       logoutButton.addEventListener('click', logoutUser)
       addButton.addEventListener("click", createTask)
     }

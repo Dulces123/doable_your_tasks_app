@@ -36,7 +36,7 @@ export const signupView = (() => {
         <p>Password</p>
         <input class = "user-form-input" type="password" name = "password">
       </form>
-      <div class = "flex-column g-16">
+      <div class = "flex-column g-16 alit-center">
         <button class = "button-submit" type = "submit" form="app-form">Create account</button>
         <a href="#">Login</a>
       </div>

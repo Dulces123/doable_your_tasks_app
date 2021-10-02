@@ -5,7 +5,8 @@
   font-family: Inter;
   font-style: normal;
   border: 0;
-  margin: auto;
+  padding: 0;
+  margin: 0;
   list-style: none;
 }
 
@@ -38,12 +39,14 @@ button:focus{
   height: 48px;
   background: #E5E7EB;
   position: relative;
+  margin: auto;
 }
 
 .app-content{
   background-color: #FFFFFF;
   width: 361px;
   height: 592px;
+  margin: auto;
 }
 
 .app-form{
@@ -94,11 +97,10 @@ button:focus{
 }
 
 .logout-logo{
-  position: absolute;
-  left: 59px;
-  top: 5px;
-  bottom: 5px;
   display: none;
+  position: absolute;
+  left: 330px;
+  top: 16px;
 }
 
 .category{
@@ -128,6 +130,10 @@ button:focus{
   gap: 10px;
 }
 
+.g-18{
+  gap: 18px;
+}
+
 .mb-16{
   margin-bottom: 16px; 
 }
@@ -137,3 +143,24 @@ button:focus{
   padding-right: 18px;
 }
 
+.justify-sb{
+  justify-content: space-between;
+}
+
+.alit-center{
+  align-items: center;
+}
+
+.category {
+  width: 250px;
+  height: 42px;
+
+  background: #FFFFFF;
+
+  border: 1px solid #D1D5DB;
+  box-sizing: border-box;
+
+  box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+
+}

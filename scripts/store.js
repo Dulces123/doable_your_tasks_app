@@ -1,5 +1,15 @@
 export const STORE = (() => {
   let listTasks = [];
+  let pending = false;
+  let important = false;
+
+  function getPendingState(){
+    return pending;
+  }
+
+  function getImportanceState(){
+    return important;
+  }
 
   function setTasks(data){
     listTasks = data
@@ -12,5 +22,7 @@ export const STORE = (() => {
   return{
     setTasks,
     getTasks,
+    getPendingState,
+    getImportanceState
   }
 })();
