@@ -16,7 +16,8 @@ export const loginView = (() => {
 
     if(loginButton){
       await SessionFetcher.login(email.value, password.value).then((body) => sessionStorage.setItem("userToken", body.token))
-      document.querySelector(".logout-logo").style.display = "block"
+      document.querySelector(".logout-logo").style.display = "block";
+      document.querySelector(".app-content").classList.add("p-12")
       await TaskFetcher.list().then(response => STORE.setTasks(response))
       DOMHandler.render(MainView);
   }
