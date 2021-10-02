@@ -24,10 +24,6 @@ input:focus{
   outline: none;
 }
 
-input[type=checkbox]:checked {
-  background-color: green;
-}
-
 button:focus{
   outline: none;
 }

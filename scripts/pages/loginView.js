@@ -3,6 +3,7 @@ import { TaskFetcher } from "../services/taskFetcher.js"
 import { DOMHandler } from "../domHandler.js"
 import { MainView } from "../components/main.js";
 import { signupView } from "../pages/signupView.js"
+import { STORE } from  "../store.js"
 
 export const loginView = (() => {
   async function loginFormOptions(e) {
@@ -14,14 +15,10 @@ export const loginView = (() => {
     const { email, password } = form;
 
     if(loginButton){
-      await SessionFetcher.login(email.value, password.value).then((body) => 
-      {
-        sessionStorage.setItem("userToken", body.token);
-        document.querySelector(".logout-logo").style.display = "block";
-        TaskFetcher.list().then(response => console.log(response))
-        DOMHandler.render(MainView);
-      }
-    );
+      await SessionFetcher.login(email.value, password.value).then((body) => sessionStorage.setItem("userToken", body.token))
+      document.querySelector(".logout-logo").style.display = "block"
+      await TaskFetcher.list().then(response => STORE.setTasks(response))
+      DOMHandler.render(MainView);
   }
 
   if(signUpAnchor){
