@@ -1,6 +1,7 @@
 import { SessionFetcher } from "../services/sessionFetcher.js";
 import { TaskFetcher } from "../services/taskFetcher.js"
 import { DOMHandler } from "../domHandler.js"
+import { MainView } from "../components/main.js";
 import { signupView } from "../pages/signupView.js"
 
 export const loginView = (() => {
@@ -18,6 +19,7 @@ export const loginView = (() => {
         sessionStorage.setItem("userToken", body.token);
         document.querySelector(".logout-logo").style.display = "block";
         TaskFetcher.list().then(response => console.log(response))
+        DOMHandler.render(MainView);
       }
     );
   }

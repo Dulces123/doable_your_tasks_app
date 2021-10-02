@@ -6,7 +6,7 @@ export const TaskFetcher = (() => {
       apiFetcher("tasks", "GET", {
         Authorization: `Token token=${sessionStorage.getItem("userToken")}`,
       }),
-    create: (title, dueDate) =>
+    create: (title, due_date) =>
       apiFetcher(
         "tasks",
         "POST",
@@ -14,7 +14,7 @@ export const TaskFetcher = (() => {
           "Content-type": "application/json",
           Authorization: `Token token=${sessionStorage.getItem("userToken")}`,
         },
-        { title, dueDate }
+        { title, due_date }
       ),
     edit: (id, taskData) =>
       apiFetcher(

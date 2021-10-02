@@ -1,12 +1,31 @@
 import { TaskFetcher } from "../services/taskFetcher.js";
+import { DOMHandler } from "../domHandler.js"
+import { SessionFetcher } from "../services/sessionFetcher.js";
+import { loginView } from "../pages/loginView.js"
+
 export const MainView = (() => {
+  async function logoutUser(){
+    await SessionFetcher.logout().then(() => sessionStorage.clear())
+    DOMHandler.render(loginView)
+  }
+
   async function createTask(e){
     e.preventDefault();
     const form = document.querySelector("#app-form")
     const addButton = e.target.closest(".button-submit")
-    const { title, dueDate } = form
+    const { title, due_date } = form
     if(addButton){
-      await TaskFetcher.create(title.value, dueDate.value).then(body => console.log(body))
+      if(title.value && due_date.value){
+        await TaskFetcher.create(title.value, due_date.value).then(body => {
+          console.log(body);
+          TaskFetcher.list().then(response => console.log(response));
+          DOMHandler.render(MainView)
+        })
+        
+      }
+      else{
+        alert("no puede haber campos vacíos!")
+      }
     }
   }
   return {
@@ -56,13 +75,15 @@ export const MainView = (() => {
       </ul>
       <form class = "task-form flex-column g-4" id = "app-form">
         <input type="text" name="title">
-        <input type="date" name="dueDate">
+        <input type="date" name="due_date">
         <button class = "button-submit" type = "submit" >Add Task</button>
       </form>
     </div>`
     },
     listeners: () => {
       const addButton = document.querySelector(".button-submit")
+      const logoutButton = document.querySelector(".logout-logo")
+      logoutButton.addEventListener('click', logoutUser)
       addButton.addEventListener("click", createTask)
     }
   }
