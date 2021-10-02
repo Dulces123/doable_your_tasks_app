@@ -1,29 +1,29 @@
-import { SessionFetcher } from "../services/sessionFetcher.js";
 import { TaskFetcher } from "../services/taskFetcher.js"
 import { DOMHandler } from "../domHandler.js"
-import { signupView } from "../pages/signupView.js"
+import { loginView } from "./loginView.js";
+import { UserFetcher } from "../services/userFetcher.js";
 
-export const loginView = (() => {
-  async function loginFormOptions(e) {
+export const signupView = (() => {
+  async function signupFormOptions(e) {
     e.preventDefault();
     const form = document.querySelector("#app-form");
-    const loginButton = e.target.closest("button")
-    const signUpAnchor = e.target.closest("a")
+    const signupButton = e.target.closest("button")
+    const loginAnchor = e.target.closest("a")
 
     const { email, password } = form;
 
-    if(loginButton){
-      await SessionFetcher.login(email.value, password.value).then((body) => 
+    if(signupButton){
+      await UserFetcher.create(email.value, password.value).then((body) => 
       {
+        console.log(body.token)
         sessionStorage.setItem("userToken", body.token);
         document.querySelector(".logout-logo").style.display = "block";
-        TaskFetcher.list().then(response => console.log(response))
       }
     );
   }
 
-  if(signUpAnchor){
-    DOMHandler.render(signupView)
+  if(loginAnchor){
+    DOMHandler.render(loginView)
   }
 }
 
@@ -37,14 +37,14 @@ export const loginView = (() => {
         <input class = "user-form-input" type="password" name = "password">
       </form>
       <div class = "flex-column g-16">
-        <button class = "button-submit" type = "submit" form="app-form">Login</button>
-        <a href="#">Create an account</a>
+        <button class = "button-submit" type = "submit" form="app-form">Create account</button>
+        <a href="#">Login</a>
       </div>
     </div>`;
     },
     listeners: () => {
-      const loginForm = document.querySelector(".app-form");
-      loginForm.addEventListener("click", loginFormOptions);
+      const signupForm = document.querySelector(".app-form");
+      signupForm.addEventListener("click", signupFormOptions);
     },
   };
 })();
