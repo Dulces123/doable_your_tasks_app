@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Doable</title>
+    <link rel="stylesheet" href="../stylesheets/doable.css">
+  </head>
+  <body>
+    <div class = 'app-container'>
+      <div class = "app-header flex">
+        <div>
+          <img class = "logo" src="../images/{ doable }.svg" alt="doable :)">
+        </div>
+        <div class = "logout">
+          <img class = "logout-logo" src="../images/logout.svg" alt="logout">
+        </div>
+      </div>
+      <div class = "app-content">
+        <div class = "pd-lr-18">
+          <div class = "flex">
+            <p>Sort</p>
+            <select class = "category" name="category">
+              <option value="alphabetical">Alphabetical (a-z)</option>
+              <option value="date">Due date</option>
+              <option value="importance">Importance</option>
+            </select>
+          </div>
+          <div class = "flex">
+            <p>Show</p>
+            <div class = "flex">
+              <input type="checkbox">
+              <p>Only pending</p>
+            </div>
+            <div class="flex">
+              <input type="checkbox">
+              <p>Only important</p>
+            </div>
+          </div>
+          <ul>
+            <li class = "flex">
+              <div class = "flex g-10">
+                <input type="checkbox">
+                <p>Help my mom</p>
+              </div>
+              <img src="../images/important-dark.svg" alt="importance">
+            </li>
+            <li class = "flex">
+              <div class = "flex g-10">
+                <input type="checkbox">
+                <p>Make my day</p>
+              </div>
+              <img src="../images/important-dark.svg" alt="importance">
+            </li>
+            <li class = "flex">
+              <div class = "flex g-10">
+                <input type="checkbox">
+                <p>Do my time</p>
+              </div>
+              <img src="../images/important-dark.svg" alt="importance">
+            </li>
+          </ul>
+          <form class = "flex-column g-4" id = "app-form">
+            <input type="text" name="task-title">
+            <input type="text" name="task-date">
+            <button class = "button-submit" type = "submit" >Add Task</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
