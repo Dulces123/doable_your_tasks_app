@@ -24,9 +24,38 @@ a{
 input:focus{
   outline: none;
 }
+select:focus{
+  outline: none;
+  background: gray !important;
+}
+
+option{
+  background: #E5E7EB;
+  border-radius: 50%;
+}
+
+input{
+  padding: 12px;
+}
 
 button:focus{
   outline: none;
+}
+
+.list-tasks{
+  height: 320px;
+  overflow-y: scroll;
+}
+
+.list-tasks::-webkit-scrollbar-thumb {
+  background: #EC4899;
+  border-radius: 8px;
+}
+
+.list-tasks::-webkit-scrollbar {
+  width: 12px;
+  height: 28px;
+  display: block;
 }
 
 .app-container{
@@ -108,6 +137,20 @@ button:focus{
   height: 42px;
 }
 
+.task-title{
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #374151;
+}
+
+.task-date{
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 20px;
+  color: #6B7280;
+}
+
 /*utils*/
 .flex{
   display: flex;
@@ -116,6 +159,10 @@ button:focus{
 .flex-column{
   display: flex;
   flex-direction: column;
+}
+
+.g-12{
+  gap: 12px;
 }
 
 .g-4{
@@ -142,13 +189,33 @@ button:focus{
   margin-bottom: 16px; 
 }
 
+.mb-20{
+  margin-bottom: 20px;
+}
+
+.mt-24{
+  margin-top: 24px;
+}
+
+.pt-20{
+  padding-top: 20px;
+}
+
 .pd-lr-18{
   padding-left: 18px;
   padding-right: 18px;
 }
 
+.pr-12{
+  padding-right: 12px;
+}
+
 .justify-sb{
   justify-content: space-between;
+}
+
+.op-50{
+  opacity: 0.5;
 }
 
 .alit-center{
