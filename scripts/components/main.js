@@ -69,6 +69,15 @@ export const MainView = (() => {
     }
   }
 
+  async function editTask(e){
+    const taskContainer = e.target.closest("div") 
+    if (taskContainer.id === "task"){
+      const currentTask = STORE.getTasks().find(task => task.id === parseInt(taskContainer.dataset.id))
+      STORE.setCurrentTask(currentTask)
+      console.log(STORE.getCurrentTask())
+    }
+  }
+
   async function destroyTask(e){
     e.preventDefault();
     const taskId = e.target.dataset.id;
@@ -87,7 +96,7 @@ export const MainView = (() => {
       if(pendingValue && !importanceValue){listOfTasks = STORE.getPendingTasks()}
       if(importanceValue && !pendingValue){listOfTasks = STORE.getImportantTasks()}
 
-      const filterTasks = listOfTasks.map(task => `<div class = "flex justify-sb alit-center">
+      const filterTasks = listOfTasks.map(task => `<div id = "task" data-id = ${task.id} class = "flex justify-sb alit-center">
       <div class = "flex g-10">
         <img id = "completed" data-id = ${task.id} src="./images/${!task.completed? "" : "pink-"}checkbox.svg" alt="completed">
         <p class = "task-title ${task.completed? "op-50" : ""}">${task.title}</p>
@@ -139,6 +148,7 @@ export const MainView = (() => {
       const trashButtons = document.querySelectorAll("#trash")
       const tasksFilters = document.querySelector(".filters")
       const sortOptions = document.querySelector("select")
+      const taskContainers = document.querySelectorAll("#task")
       sortOptions.addEventListener("change", sortByCriteria)
       tasksFilters.addEventListener('click', filtersOptions)
       importantToggles.forEach(toggle => toggle.addEventListener('click', changeImportant))
@@ -146,6 +156,7 @@ export const MainView = (() => {
       logoutButton.addEventListener('click', logoutUser)
       addButton.addEventListener("click", createTask)
       trashButtons.forEach(button => button.addEventListener("click", destroyTask))
+      taskContainers.forEach(container => container.addEventListener('click', editTask))
     }
   }
 })();

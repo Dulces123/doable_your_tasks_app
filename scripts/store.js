@@ -1,6 +1,7 @@
 export const STORE = (() => {
   let listTasks = [];
-  let listSortedTasks = []
+  let listSortedTasks = [];
+  let currentTask = {};
   let pending = false;
   let important = false;
   let criteria = 4
@@ -40,6 +41,14 @@ export const STORE = (() => {
 
   function getSortCriteria(){
     return criteria
+  }
+
+  function getCurrentTask(){
+    return currentTask
+  }
+
+  function setCurrentTask(data){
+    currentTask = data;
   }
 
   function getPendingTasks(){
@@ -87,6 +96,8 @@ export const STORE = (() => {
     getSortCriteria,
     sortTasks,
     setListSortedTasks,
-    getListSortedTasks
+    getListSortedTasks,
+    getCurrentTask,
+    setCurrentTask
   }
 })();
