@@ -83,7 +83,10 @@ export const MainView = (() => {
         <img id = "completed" data-id = ${task.id} src="./images/${!task.completed? "" : "pink-"}checkbox.svg" alt="completed">
         <p class = "task-title ${task.completed? "op-50" : ""}">${task.title}</p>
       </div>
-      <img id = "important" data-id = ${task.id} src="./images/important-${!task.important? "dark" : task.completed? "pink-lite": "pink"}.svg" alt="importance">
+      <div class = "flex g-4 mr-12">
+        <img id = "trash" data-id = ${task.id} src="./images/trash.svg" alt="trash">
+        <img id = "important" data-id = ${task.id} src="./images/important-${!task.important? "dark" : task.completed? "pink-lite": "pink"}.svg" alt="importance">
+      </div>
     </div>
     <p class = "task-date ${task.completed? "op-50" : ""}">${ new Date(task.due_date).toDateString().replace(/\ 20\d{2}/,"")}</p>`).join(" ")
 
