@@ -69,6 +69,15 @@ export const MainView = (() => {
     }
   }
 
+  async function destroyTask(e){
+    e.preventDefault();
+    const taskId = e.target.dataset.id;
+    await TaskFetcher.delete(taskId);
+    const newTasks = STORE.getTasks().filter(task => task.id !== parseInt(taskId))
+    STORE.setTasks(newTasks)
+    DOMHandler.render(MainView);
+  }
+
   return {
     render: () => {
       const pendingValue = STORE.getPendingState()
@@ -83,7 +92,7 @@ export const MainView = (() => {
         <img id = "completed" data-id = ${task.id} src="./images/${!task.completed? "" : "pink-"}checkbox.svg" alt="completed">
         <p class = "task-title ${task.completed? "op-50" : ""}">${task.title}</p>
       </div>
-      <div class = "flex g-4 mr-12">
+      <div class = "flex g-4 mr-20">
         <img id = "trash" data-id = ${task.id} src="./images/trash.svg" alt="trash">
         <img id = "important" data-id = ${task.id} src="./images/important-${!task.important? "dark" : task.completed? "pink-lite": "pink"}.svg" alt="importance">
       </div>
@@ -127,6 +136,7 @@ export const MainView = (() => {
       const logoutButton = document.querySelector(".logout-logo")
       const importantToggles = document.querySelectorAll("#important")
       const completedToggles = document.querySelectorAll("#completed")
+      const trashButtons = document.querySelectorAll("#trash")
       const tasksFilters = document.querySelector(".filters")
       const sortOptions = document.querySelector("select")
       sortOptions.addEventListener("change", sortByCriteria)
@@ -135,6 +145,7 @@ export const MainView = (() => {
       completedToggles.forEach(toggle => toggle.addEventListener('click', markAsCompleted))
       logoutButton.addEventListener('click', logoutUser)
       addButton.addEventListener("click", createTask)
+      trashButtons.forEach(button => button.addEventListener("click", destroyTask))
     }
   }
 })();
