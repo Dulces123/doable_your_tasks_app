@@ -26,5 +26,9 @@ export const TaskFetcher = (() => {
         },
         taskData
       ),
+    delete: (id) =>
+      apiFetcher(`tasks/${id}`, "DELETE", {
+        Authorization: `Token token=${sessionStorage.getItem("userToken")}`,
+      }),
   };
 })();
