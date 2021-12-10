@@ -20,6 +20,7 @@ export const loginView = (() => {
       document.querySelector(".app-content").classList.add("p-12")
       await TaskFetcher.list().then(response => STORE.setTasks(response))
       DOMHandler.render(MainView);
+      document.querySelector("#edit").style.display = "none"
   }
 
   if(signUpAnchor){

@@ -43,14 +43,6 @@ export const STORE = (() => {
     return criteria
   }
 
-  function getCurrentTask(){
-    return currentTask
-  }
-
-  function setCurrentTask(data){
-    currentTask = data;
-  }
-
   function getPendingTasks(){
     return [...STORE.getTasks()].filter( task => task.completed === false)
   }
@@ -82,6 +74,15 @@ export const STORE = (() => {
   function getTasks(){
     return [...listTasks]
   }
+
+  function setCurrentTask(data){
+    currentTask = data
+  }
+
+  function getCurrentTask(){
+    return currentTask
+  }
+
 
   return{
     setTasks,

@@ -10,4 +10,5 @@ if (sessionStorage.getItem("userToken") === null) {
   await TaskFetcher.list().then((response) => STORE.setTasks(response));
   document.querySelector(".logout-logo").style.display = "block";
   DOMHandler.render(MainView);
+  document.querySelector("#edit").style.display = "none"
 }
