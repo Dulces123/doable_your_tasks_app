@@ -1,7 +1,7 @@
 ***
 # <ins>doAble the app to organize your tasks</ins>
 ***
-> With doable app you can **create**, **edit** and **delete** your tasks, marks as **completed** and mark as **important**. Besides you will be able to order your tasks by date, by importance or alphabetically. Get started with the app by following the next steps also you will provided by a file json with the API, you could use it with insomnia.
+> With doable app you can **create**, **edit** and **delete** your tasks, marks as **completed** and mark as **important**. Besides you will be able to order your tasks by date, by importance or alphabetically. Get started with the app by following the next steps also you will provided with a file json with the API, you could use it with insomnia.
 ---
 
 1. Create a user with your email and a password.
